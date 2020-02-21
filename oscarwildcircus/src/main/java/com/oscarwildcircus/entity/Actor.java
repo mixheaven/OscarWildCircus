@@ -1,4 +1,4 @@
-package com.oscarwildcircus.Entity;
+package com.oscarwildcircus.entity;
 
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,11 +21,11 @@ public class Actor {
     @NotNull
     private String name;
     @Column(length = 2000)
-    private String description;
+    private String biography;
 
-    private String pictureUrl;
+    private String portraitUrl;
     @Transient
-    private MultipartFile picture;
+    private MultipartFile portrait;
 
     @OneToMany(mappedBy = "actor")
     private Set<Activity> activities;
@@ -42,4 +42,5 @@ public class Actor {
     public void setActivities(Set<Activity> activities) {
         this.activities = activities;
     }
+
 }

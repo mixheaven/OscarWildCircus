@@ -1,4 +1,4 @@
-package com.oscarwildcircus.Entity;
+package com.oscarwildcircus.entity;
 
 
 import lombok.Data;
@@ -7,11 +7,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Data
-public class Activity {
+public class Activity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +30,11 @@ public class Activity {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+
+    @DateTimeFormat(pattern = "hh:mm")
     private Date startHour;
+
+    @DateTimeFormat(pattern = "hh:mm")
     private Date endHour;
 
     @ManyToOne

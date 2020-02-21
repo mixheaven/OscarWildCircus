@@ -1,4 +1,4 @@
-package com.oscarwildcircus.Entity;
+package com.oscarwildcircus.entity;
 
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;

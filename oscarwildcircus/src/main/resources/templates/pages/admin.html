@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+    <h2>Home</h2>
+    <form enctype="multipart/form-data" th:action="@{/wild/create}" th:method="POST"
+          th:object="${newWild}">
+        <label for="description">description</label>
+        <input id="description" name="description" th:field="*{description}" type="text"/><br>
+
+        <label for="img">image</label>
+        <input type="file" id="img" th:field="*{picture}">
+        <input type="submit" value="Valider">
+    </form>
+    <h2>Activity</h2>
+    <form enctype="multipart/form-data" th:action="@{/activity/create}" method="POST"
+          th:object="${newActivity}">
+        <label for="title">Title</label>
+        <input id="title" name="title" th:field="*{title}" type="text">
+
+        <label for="genre">genre</label>
+        <input id="genre" name="genre" th:field="*{genre}">
+
+        <label for="cost">Price</label>
+        <input id="cost" name="cost" type="text">
+
+        <label for="date">Date</label>
+        <input id="date" name="date" th:field="*{date}" type="date">
+
+        <label for="startHour">Beginning</label>
+        <input id="startHour" name="startHour" th:field="*{startHour}" type="time">
+
+        <label for="endHour">Date</label>
+        <input id="endHour" name="endHour" th:field="*{endHour}" type="time">
+        <input type="submit" value="Valider">
+    </form>
+    <h2>Actors</h2>
+    <form enctype="multipart/form-data" th:action="@{/actor/create}" method="POST"
+          th:object="${newActor}">
+        <label for="name">Name</label>
+        <input id="name" name="name" th:field="*{name}" type="text">
+
+        <label for="biography">biography</label>
+        <input id="biography" name="biography" th:field="*{biography}" type="text"/>
+
+
+        <label for="picture">image</label>
+        <input type="file" id="picture" th:fiel="picture">
+        <input type="submit" value="Valider">
+
+    </form>
+    <h2>Home</h2>
+    <ul>
+        <li th:each="wild : ${wildList}">
+            <img th:src="${wild.pictureUrl}">
+            <span th:text="${wild.description}"></span>
+        </li>
+    </ul>
+    <h2>Activity</h2>
+    <ul>
+        <li th:each="activity : ${activityList}">
+            <span th:text="${activity.title}"></span>
+            <span th:text="${activity.genre}"></span>
+            <span th:text="${activity.date}"></span>
+            <span th:text="${activity.startHour}"></span>
+            <span th:text="${activity.endHour}"></span>
+        </li>
+    </ul>
+    <h2>Actor</h2>
+    <ul>
+        <li th:each="actor : ${actorList}">
+            <span th:text="${actor.name}"></span>
+            <span th:text="${actor.biography}"></span>
+            <img th:src="${actor.portraitUrl}">
+        </li>
+    </ul>
+</body>
+</html>

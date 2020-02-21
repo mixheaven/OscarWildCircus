@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oscar Wlld Circus</title>
+</head>
+<body>
+    <ul>
+        <li th:each="wild : ${wildList}">
+            <img th:src="${wild.pictureUrl}">
+            <span th:text="${wild.description}"></span>
+        </li>
+    </ul>
+    </body>
+</html>
