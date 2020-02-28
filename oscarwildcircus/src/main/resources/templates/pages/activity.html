@@ -7,7 +7,7 @@
 <body>
     <ul>
         <li th:each="activity : ${activityList}">
-            <span th:src="${activity.title}"></span>
+            <span th:text="${activity.title}"></span>
         </li>
     </ul>
 </body>

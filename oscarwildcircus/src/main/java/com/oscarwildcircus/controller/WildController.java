@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/")
 public class WildController {
 
     @Autowired
@@ -22,18 +24,25 @@ public class WildController {
         this.storageService = storageService;
     }
 
+    @GetMapping("/")
+    public String home(Model model){
+        model.addAttribute("wildList", wildRepository.findAll());
+        return "pages/home";
+    }
 
-    @PostMapping("/wild/create")
+    @GetMapping("wild/create")
+    public String getAll(Model model)throws Exception{
+        model.addAttribute("newWild", new Wild());
+        return "pages/home";
+    }
+
+    @PostMapping("wild/create")
     public String wildFormProcess(Wild wild){
 
         storageService.store(wild.getPicture());
         wild.setPictureUrl("/files/" + wild.getPicture().getOriginalFilename());
         wildRepository.save(wild);
-        return "redirect:/home";
+        return "redirect:/admin";
     }
-    @GetMapping("/home")
-    public String home(Model model){
-        model.addAttribute("wildList", wildRepository.findAll());
-        return "pages/home";
-    }
+
 }

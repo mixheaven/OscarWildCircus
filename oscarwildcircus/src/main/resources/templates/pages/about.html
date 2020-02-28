@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>About</title>
 </head>
 <body>
 <h2>Actor</h2>
 <ul>
     <li th:each="actor : ${actorList}">
         <span th:text="${actor.name}"></span>
-        <span th:text="${actor.biography}"></span>
         <img th:src="${actor.portraitUrl}">
+        <span th:text="${actor.biography}"></span>
     </li>
-
+</ul>
 </body>
 </html>

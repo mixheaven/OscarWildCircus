@@ -3,6 +3,10 @@ package com.oscarwildcircus.controller;
 import com.oscarwildcircus.entity.Activity;
 import com.oscarwildcircus.entity.Actor;
 import com.oscarwildcircus.entity.Wild;
+import com.oscarwildcircus.repository.ActivityRepository;
+import com.oscarwildcircus.repository.ActorRepository;
+import com.oscarwildcircus.repository.WildRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +21,15 @@ import javax.validation.Valid;
 @RequestMapping("/admin")
 public class AdminController {
 
+
+    @Autowired
+    private WildRepository wildRepository;
+
+    @Autowired
+    private ActorRepository actorRepository;
+
+    @Autowired
+    private ActivityRepository activityRepository;
 
     @GetMapping("/create")
     public String getAll(Model model) throws Exception {
@@ -35,12 +48,6 @@ public class AdminController {
             model.addAttribute("newActor", new Actor());
             return "pages/admin";
         }
-        /*Wild currentWild= new Wild();
-        Activity currentActivity = new Activity();
-        Actor currentActor = new Actor();
-        model.addAttribute("newActor", currentActor);
-        model.addAttribute("newWild", currentWild);
-        model.addAttribute("newActivity", currentActivity);*/
         return "redirect:/admin";
     }
     @GetMapping
@@ -52,6 +59,9 @@ public class AdminController {
         model.addAttribute("newActivity", currentActivity);
         model.addAttribute("newWild", currentWild);
         model.addAttribute("page", "adminListPage");
+        model.addAttribute("wildList", wildRepository.findAll());
+        model.addAttribute("activityList", activityRepository.findAll());
+        model.addAttribute("actorList", actorRepository.findAll());
         return "pages/admin";
     }
 
