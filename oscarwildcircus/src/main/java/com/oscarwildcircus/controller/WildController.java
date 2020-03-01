@@ -24,7 +24,7 @@ public class WildController {
         this.storageService = storageService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String home(Model model){
         model.addAttribute("wildList", wildRepository.findAll());
         return "pages/home";
