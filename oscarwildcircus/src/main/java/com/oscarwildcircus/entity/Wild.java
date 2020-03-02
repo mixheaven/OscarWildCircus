@@ -14,6 +14,7 @@ public class Wild {
     private long id;
     @Column(length = 5000)
     private String description;
+    private String about;
     private String pictureUrl;
     @Transient
     private MultipartFile picture;

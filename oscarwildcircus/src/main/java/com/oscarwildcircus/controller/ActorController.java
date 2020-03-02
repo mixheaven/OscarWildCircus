@@ -1,7 +1,9 @@
 package com.oscarwildcircus.controller;
 
 import com.oscarwildcircus.entity.Actor;
+import com.oscarwildcircus.entity.Wild;
 import com.oscarwildcircus.repository.ActorRepository;
+import com.oscarwildcircus.repository.WildRepository;
 import com.oscarwildcircus.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ActorController {
 
     @Autowired
+    private WildRepository wildRepository;
+    @Autowired
     private ActorRepository actorRepository;
     @Autowired
     private StorageService storageService;
+
 
     public ActorController(StorageService storageService){
         this.storageService= storageService;
@@ -25,6 +30,8 @@ public class ActorController {
     @GetMapping("/actor")
     public String actor(Model model){
         Actor currentActor = new Actor();
+        Wild currentWild = new Wild();
+        model.addAttribute("wildList",wildRepository.findAll());
         model.addAttribute("actorList", actorRepository.findAll());
         return "pages/about";
     }
@@ -36,7 +43,7 @@ public class ActorController {
     }
 
     @PostMapping("/actor/create")
-    public String actorFormProcess(Actor actor){
+    public String actorFormProcess(Actor actor, Wild wild){
 
         storageService.store(actor.getPortrait());
         actor.setPortraitUrl("/files/" + actor.getPortrait().getOriginalFilename());
@@ -44,5 +51,6 @@ public class ActorController {
         return "redirect:/admin";
 
     }
+
 
 }

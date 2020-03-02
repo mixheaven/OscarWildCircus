@@ -13,5 +13,9 @@
         <span th:text="${actor.biography}"></span>
     </li>
 </ul>
+<h2>About</h2>
+    <div th:each="wild : ${wildList}">
+        <p th:text="${wild.about}"></p>
+    </div>
 </body>
 </html>
