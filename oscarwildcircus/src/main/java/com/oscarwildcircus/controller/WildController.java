@@ -27,13 +27,13 @@ public class WildController {
     @GetMapping
     public String home(Model model){
         model.addAttribute("wildList", wildRepository.findAll());
-        return "pages/home";
+        return "home";
     }
 
     @GetMapping("wild/create")
     public String getAll(Model model)throws Exception{
         model.addAttribute("newWild", new Wild());
-        return "pages/home";
+        return "home";
     }
 
     @PostMapping("wild/create")

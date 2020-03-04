@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Reservation</h2>
+    <ul>
+        <li th:each="reservation : ${reservationList}">
+        <span th:text="${reservation.firstName}"></span>
+        <span th:text="${reservation.lastName}"></span>
+        <span th:text="${reservation.address}"></span>
+        <span th:text="${reservation.phone}"></span>
+        <span th:text="${reservation.mail}"></span>
+        <span th:text="${reservation.placeWanted}"></span>
+        </li>
+    </ul>
+
+</body>
+</html>

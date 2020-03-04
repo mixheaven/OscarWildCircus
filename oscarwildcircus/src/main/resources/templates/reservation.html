@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+</head>
+<body>
+    <h2>Reservation</h2>
+    <form enctype="multipart/form-data" th:action="@{/reservation/create}" th:method="POST"
+          th:object="${newReservation}">
+
+
+        <label for="firstName">Last Name</label>
+        <input id="firstName" name="firstName" th:field="*{firstName}" type="text"/>
+
+        <label for="lastName">First Name</label>
+        <input id="lastName" name="lastName" th:field="*{lastName}" type="text"/>
+
+        <label for="address">Address</label>
+        <input id="address" name="address" th:field="*{address}" type="text"/>
+
+        <label for="mail">Email</label>
+        <input id="mail" name="mail" th:field="*{mail}" type="email"/>
+
+        <label for="phone">Email</label>
+        <input id="phone" name="phone" th:field="*{phone}" type="text"/>
+
+        <label for="placeWanted">Number ticket</label>
+        <input id="placeWanted" name="placeWanted" th:field="*{placeWanted}" type="number"/>
+        <input type="submit" value="Valider">
+
+    </form>
+
+</body>
+</html>

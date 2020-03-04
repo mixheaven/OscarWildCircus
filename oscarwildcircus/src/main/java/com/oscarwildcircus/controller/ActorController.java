@@ -27,6 +27,12 @@ public class ActorController {
         this.storageService= storageService;
     }
 
+    /**
+     * this controller is used to display the about page
+     *
+     * @param model
+     * @return template page about
+     */
     @GetMapping("/actor")
     public String actor(Model model){
         Actor currentActor = new Actor();
@@ -36,14 +42,27 @@ public class ActorController {
         return "pages/about";
     }
 
+    /**
+     * this controller is used to display the actor form
+     *
+     * @param model
+     * @return template of creation form
+     * @throws Exception
+     */
     @GetMapping("/actor/create")
     public String getAll(Model model) throws Exception{
         model.addAttribute("newActor", new Actor());
         return "pages/about";
     }
 
+    /**
+     * this controller is used to create an to save an actor
+     *
+     * @param actor
+     * @return directly at admin page for other completion
+     */
     @PostMapping("/actor/create")
-    public String actorFormProcess(Actor actor, Wild wild){
+    public String actorFormProcess(Actor actor){
 
         storageService.store(actor.getPortrait());
         actor.setPortraitUrl("/files/" + actor.getPortrait().getOriginalFilename());

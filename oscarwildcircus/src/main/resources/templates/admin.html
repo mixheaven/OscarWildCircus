@@ -9,10 +9,10 @@
     <form enctype="multipart/form-data" th:action="@{/wild/create}" th:method="POST"
           th:object="${newWild}">
         <label for="description">description</label>
-        <input id="description" name="description" th:field="*{description}" type="text"/><br>
+        <input id="description" name="description" th:field="*{description}" type="text"/>
 
         <label for="about">about</label>
-        <input id="about" name="about" th:field="*{about}" type="text"/><br>
+        <input id="about" name="about" th:field="*{about}" type="text"/>
 
         <label for="img">image</label>
         <input type="file" id="img" th:field="*{picture}">
@@ -39,6 +39,7 @@
         <label for="endHour">Date</label>
         <input id="endHour" name="endHour" th:field="*{endHour}" type="time">
         <input type="submit" value="Valider">
+
     </form>
     <h2>Actors</h2>
     <form enctype="multipart/form-data" th:action="@{/actor/create}" method="POST"

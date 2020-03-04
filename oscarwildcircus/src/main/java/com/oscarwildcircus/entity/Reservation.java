@@ -3,7 +3,8 @@ package com.oscarwildcircus.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,15 +14,28 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Size(min = 1, max =255)
+    @NotNull
+    private String firstName;
+    @Size(min = 1, max =255)
+    @NotNull
+    private String lastName;
+    @Size(min = 1, max =255)
+    @NotNull
+    private String address;
+    @Size(min = 1, max =255)
+    @NotNull
+    private String mail;
+    @Size(min = 1, max =255)
+    @NotNull
+    private String phone;
 
     private int placeMax;
 
     private int placeWanted;
 
-    private Date date;
 
-    @OneToOne
-    private Person person;
+
 
     @OneToMany(mappedBy = "reservation")
     private Set<Activity> activities;

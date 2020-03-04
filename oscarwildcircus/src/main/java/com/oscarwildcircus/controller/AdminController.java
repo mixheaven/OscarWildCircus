@@ -2,9 +2,11 @@ package com.oscarwildcircus.controller;
 
 import com.oscarwildcircus.entity.Activity;
 import com.oscarwildcircus.entity.Actor;
+import com.oscarwildcircus.entity.Reservation;
 import com.oscarwildcircus.entity.Wild;
 import com.oscarwildcircus.repository.ActivityRepository;
 import com.oscarwildcircus.repository.ActorRepository;
+import com.oscarwildcircus.repository.ReservationRepository;
 import com.oscarwildcircus.repository.WildRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,10 @@ public class AdminController {
     @Autowired
     private ActivityRepository activityRepository;
 
+    @Autowired
+    private ReservationRepository reservationRepository;
+
+    /*
     @GetMapping("/create")
     public String getAll(Model model) throws Exception {
         model.addAttribute("newWild", new Wild());
@@ -38,18 +44,25 @@ public class AdminController {
         model.addAttribute("newActor",new Actor());
         return "pages/admin";
     }
+*/
 
-
-    @PostMapping("/create")
+/*    @PostMapping("/create")
     public String adminPost(@Valid @ModelAttribute Activity activity, Wild wild, Actor actor, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("newActivity", new Activity());
-            model.addAttribute("newWIld", new Wild());
+            model.addAttribute("newWild", new Wild());
             model.addAttribute("newActor", new Actor());
             return "pages/admin";
         }
         return "redirect:/admin";
-    }
+    }*/
+
+    /**
+     * this controller is used to show a list of distinct information
+     *
+     * @param model
+     * @return page admin
+     */
     @GetMapping
     public String getAdminList(Model model) {
         Wild currentWild= new Wild();
@@ -62,7 +75,15 @@ public class AdminController {
         model.addAttribute("wildList", wildRepository.findAll());
         model.addAttribute("activityList", activityRepository.findAll());
         model.addAttribute("actorList", actorRepository.findAll());
-        return "pages/admin";
+
+        return "admin";
+    }
+    @GetMapping("/ticket")
+    public String ticket(Model model){
+        Reservation currentReservation = new Reservation();
+        model.addAttribute("newReservation",currentReservation);
+        model.addAttribute("reservationList",reservationRepository.findAll());
+        return "ticket";
     }
 
 }
