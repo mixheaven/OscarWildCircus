@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Controller
 public class ReservationController {
 
@@ -36,18 +38,16 @@ public class ReservationController {
      * @throws Exception
      */
     @GetMapping("/reservation/create")
-    public String getAll(Model model)throws Exception{
-        Activity currentActivity = new Activity();
-        model.addAttribute("currentActivity", currentActivity);
+    public String getAll(@PathVariable long id, Model model)throws Exception{
+        Optional<Activity> activityOne = activityRepository.findById(id);
+        model.addAttribute("currentActivity", activityOne);
         model.addAttribute("activityList", activityRepository.findAll());
         model.addAttribute("newReservation", new Reservation());
         return "reservation";
     }
 
     @PostMapping("/reservation/create")
-    public String reservationFromProcess(@PathVariable long id, Reservation reservation, Model model){
-        Activity currentActivity = new Activity();
-        model.addAttribute("activityOne", activityRepository.findById(id));
+    public String reservationFromProcess( Reservation reservation, Model model){
 
         reservationRepository.save(reservation);
         return "redirect:/reservation/";

@@ -64,8 +64,6 @@ public class AdminController {
     @GetMapping("/ticket")
     public String ticket(Model model){
         Reservation currentReservation = new Reservation();
-        Activity currentActivity = new Activity();
-        model.addAttribute("currentActivity", currentActivity);
         model.addAttribute("activityOne", activityRepository.findAll());
         model.addAttribute("newReservation",currentReservation);
         model.addAttribute("reservationList",reservationRepository.findAll());

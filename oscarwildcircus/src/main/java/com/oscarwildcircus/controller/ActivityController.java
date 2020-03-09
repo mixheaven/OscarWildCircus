@@ -11,8 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
-import java.util.Optional;
+
 
 
 @Controller
@@ -32,17 +31,16 @@ public class ActivityController {
 
 
     @GetMapping
-    public String activity(@PathVariable long id, Model model){
+    public String activity( Model model){
         Activity currentActivity = new Activity();
-        Optional<Activity> activityOne = activityRepository.findById(id);
-        model.addAttribute("activityOne", activityRepository.findById(id));
         model.addAttribute("activityList", activityRepository.findAll());
         return"activity";
 
     }
     @GetMapping("/create")
-    public String getAll(Model model) throws Exception{
+    public String getAll(@PathVariable long id, Model model) throws Exception{
         model.addAttribute("newActivity", new Activity());
+        model.addAttribute("activityOne", activityRepository.findById(id));
         return "activity";
     }
 
