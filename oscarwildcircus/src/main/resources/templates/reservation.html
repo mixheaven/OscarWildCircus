@@ -27,9 +27,24 @@
 
         <label for="placeWanted">Number ticket</label>
         <input id="placeWanted" name="placeWanted" th:field="*{placeWanted}" type="number"/>
-        <input type="submit" value="Valider">
 
+
+        <ul>
+            <li th:each="activity : ${activityList}">
+                <span th:text="${activity.title}"></span>
+                <span th:text="${activity.genre}"></span>
+                <span th:text="${activity.cost}"></span>
+                <span th:text="${activity.date}"></span>
+                <span th:text="${activity.startHour}"></span>
+                <span th:text="${activity.endHour}"></span>
+                <input type="checkbox" th:field="${activityList}" value="${activity.id}">
+            </li>
+        </ul>
+
+        <input type="submit" value="Valider">
     </form>
+
+
 
 </body>
 </html>

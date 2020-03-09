@@ -11,10 +11,7 @@ import com.oscarwildcircus.repository.WildRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
@@ -36,26 +33,12 @@ public class AdminController {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    /*
-    @GetMapping("/create")
-    public String getAll(Model model) throws Exception {
-        model.addAttribute("newWild", new Wild());
-        model.addAttribute("newActivity",new Activity());
-        model.addAttribute("newActor",new Actor());
-        return "pages/admin";
-    }
-*/
+    public AdminController(ActivityRepository activityRepository){
+        this.activityRepository = activityRepository;
 
-/*    @PostMapping("/create")
-    public String adminPost(@Valid @ModelAttribute Activity activity, Wild wild, Actor actor, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("newActivity", new Activity());
-            model.addAttribute("newWild", new Wild());
-            model.addAttribute("newActor", new Actor());
-            return "pages/admin";
-        }
-        return "redirect:/admin";
-    }*/
+    }
+
+
 
     /**
      * this controller is used to show a list of distinct information
@@ -81,9 +64,11 @@ public class AdminController {
     @GetMapping("/ticket")
     public String ticket(Model model){
         Reservation currentReservation = new Reservation();
+        Activity currentActivity = new Activity();
+        model.addAttribute("currentActivity", currentActivity);
+        model.addAttribute("activityOne", activityRepository.findAll());
         model.addAttribute("newReservation",currentReservation);
         model.addAttribute("reservationList",reservationRepository.findAll());
         return "ticket";
     }
-
 }

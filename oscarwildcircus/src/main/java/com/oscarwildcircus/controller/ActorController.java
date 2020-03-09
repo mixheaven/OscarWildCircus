@@ -39,7 +39,7 @@ public class ActorController {
         Wild currentWild = new Wild();
         model.addAttribute("wildList",wildRepository.findAll());
         model.addAttribute("actorList", actorRepository.findAll());
-        return "pages/about";
+        return "about";
     }
 
     /**
@@ -52,7 +52,7 @@ public class ActorController {
     @GetMapping("/actor/create")
     public String getAll(Model model) throws Exception{
         model.addAttribute("newActor", new Actor());
-        return "pages/about";
+        return "about";
     }
 
     /**
