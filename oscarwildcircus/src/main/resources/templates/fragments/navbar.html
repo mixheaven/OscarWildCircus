@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<nav th:fragment="navbar">
+    <ul class="nav-bar">
+        <li><a th:href="@{'/'}">Home</a></li>
+        <li><a th:href="@{'/actor/'}">About</a></li>
+        <li><a th:href="@{'/activity/'}">Activity</a>
+        </li><li><a th:href="@{'/reservation/'}">Reservation</a></li>
+        <li><a th:href="@{'/admin/'}">Private</a></li>
+        <li><a th:href="@{'/admin/ticket'}" th:if="${newWild}">Ticket</a>
+    </ul>
+</nav>
+</html>

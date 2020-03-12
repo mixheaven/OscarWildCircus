@@ -5,7 +5,6 @@ import com.oscarwildcircus.entity.Reservation;
 import com.oscarwildcircus.repository.ActivityRepository;
 import com.oscarwildcircus.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

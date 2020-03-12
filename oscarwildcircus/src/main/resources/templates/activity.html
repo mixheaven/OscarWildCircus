@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:background-image="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="/fragments/head :: head">
 </head>
-<body>
+<body class="user">
+<h1>Oscar Wild Circus</h1>
+
+    <nav th:replace="/fragments/navbar.html :: navbar"></nav>
     <ul>
-        <li th:each="activity : ${activityList}">
+        <li class="c-text" th:each="activity : ${activityList}">
             <span th:text="${activity.title}"></span>
             <span th:text="${activity.genre}"></span>
             <span th:text="${activity.cost}"></span>

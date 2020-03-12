@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
@@ -61,12 +60,14 @@ public class AdminController {
 
         return "admin";
     }
-    @GetMapping("/ticket")
-    public String ticket(Model model){
+    @GetMapping("/ticket/")
+    public String ticket( Model model){
         Reservation currentReservation = new Reservation();
+
         model.addAttribute("activityOne", activityRepository.findAll());
         model.addAttribute("newReservation",currentReservation);
         model.addAttribute("reservationList",reservationRepository.findAll());
         return "ticket";
     }
+
 }

@@ -1,0 +1,85 @@
+.user {
+      background-image: url("https://zupimages.net/up/19/29/6t5a.jpg");
+      background-repeat: no-repeat;
+      background-position: static;
+      background-size:cover;
+      background-attachment: fixed;
+
+}
+
+li{
+  list-style-type: none;
+
+}
+#description {
+    display: flex;
+    color: white;
+    text-align: left;
+
+}
+h1{
+    text-align: center;
+    color: red;
+}
+nav{
+    width: 70%;
+    margin: auto;
+    background-color: black;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.nav-bar{
+    display: flex;
+    justify-content: space-evenly;
+}
+.nav-bar a{
+    color: white;
+
+}
+.nav-bar a:Hover{
+    color: #9f9f9f;
+}
+h2{
+    display: flex;
+    color: white;
+}
+.c-text{
+    color: white;
+}
+.form-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: 0 auto;
+
+}
+.form-row{
+    margin-bottom: 15px;
+    width:100%
+
+}
+
+.form-row label{
+    display: block;
+    padding-bottom: 5px;
+}
+.form-row input{
+    max-width: 300px;
+}
+.form-wild{
+    display: flex;
+    justify-content: space-around
+}
+.form-wild-row input{
+    display: block;
+}
+.form-activity{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+
+}
+.form-activity-row input{
+    display: block;
+    width: 100%;
+}

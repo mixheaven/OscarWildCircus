@@ -2,43 +2,65 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}">
+
     <title>Admin</title>
 </head>
+<nav th:replace="/fragments/navbar.html :: navbar"></nav>
+
 <body>
     <h2>Home</h2>
     <form enctype="multipart/form-data" th:action="@{/wild/create}" th:method="POST"
           th:object="${newWild}">
-        <label for="description">description</label>
-        <input id="description" name="description" th:field="*{description}" type="text"/>
 
-        <label for="about">about</label>
-        <input id="about" name="about" th:field="*{about}" type="text"/>
+        <div class="form-wild">
+            <div class="form-wild-row">
+                <label for="description">description</label>
+                <input id="description" name="description" th:field="*{description}" type="text"/>
+            </div>
+            <div class="form-wild-row">
+                <label for="about">about</label>
+                <input id="about" name="about" th:field="*{about}" type="text"/>
+            </div>
+            <div class="form-wild-row">
+                <label for="img">image</label>
+                <input type="file" id="img" th:field="*{picture}">
+            </div>
+            <input type="submit" value="Valider">
+        </div>
 
-        <label for="img">image</label>
-        <input type="file" id="img" th:field="*{picture}">
-        <input type="submit" value="Valider">
     </form>
     <h2>Activity</h2>
     <form enctype="multipart/form-data" th:action="@{/activity/create}" method="POST"
           th:object="${newActivity}">
-        <label for="title">Title</label>
-        <input id="title" name="title" th:field="*{title}" type="text">
 
-        <label for="genre">genre</label>
-        <input id="genre" name="genre" th:field="*{genre}">
-
-        <label for="cost">Price</label>
-        <input id="cost" name="cost" type="text">
-
-        <label for="date">Date</label>
-        <input id="date" name="date" th:field="*{date}" type="date">
-
-        <label for="startHour">Beginning</label>
-        <input id="startHour" name="startHour" th:field="*{startHour}" type="time">
-
-        <label for="endHour">End</label>
-        <input id="endHour" name="endHour" th:field="*{endHour}" type="time">
-        <input type="submit" value="Valider">
+        <div class="form-activity">
+            <div class="form-activity-row">
+                <label for="title">Title</label>
+                <input id="title" name="title" th:field="*{title}" type="text">
+            </div>
+            <div class="form-activity-row">
+                <label for="genre">genre</label>
+                <input id="genre" name="genre" th:field="*{genre}">
+            </div>
+            <div class="form-activity-row">
+                <label for="cost">Price</label>
+                <input id="cost" name="cost" type="text">
+            </div>
+            <div class="form-activity-row">
+                <label for="date">Date</label>
+                <input id="date" name="date" th:field="*{date}" type="date">
+            </div>
+            <div class="form-activity-row">
+                <label for="startHour">Beginning</label>
+                <input id="startHour" name="startHour" th:field="*{startHour}" type="time">
+            </div>
+            <div class="form-activity-row">
+                <label for="endHour">End</label>
+                <input id="endHour" name="endHour" th:field="*{endHour}" type="time">
+            </div>
+            <input type="submit" value="Valider">
+        </div>
 
     </form>
     <h2>Actors</h2>
@@ -72,7 +94,11 @@
             <span th:text="${activity.date}"></span>
             <span th:text="${activity.startHour}"></span>
             <span th:text="${activity.endHour}"></span>
+            <a href="#" th:onclick="|deleteUrl('/admin/${activityOne}')|">Supprimer</a>
+
         </li>
+
+
     </ul>
     <h2>Actor</h2>
     <ul>
@@ -80,6 +106,8 @@
             <span th:text="${actor.name}"></span>
             <span th:text="${actor.biography}"></span>
             <img th:src="${actor.portraitUrl}">
+            <a href="#" th:onclick="|deleteUrl('/admin/${actor.id}')|">Supprimer</a>
+
         </li>
     </ul>
 </body>

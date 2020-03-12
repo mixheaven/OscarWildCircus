@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-</head>
-<body>
+<head th:replace="/fragments/head.html :: head"></head>
+<body class="user">
+<h1>Oscar Wild Circus</h1>
+
+<nav th:replace="/fragments/navbar.html :: navbar"></nav>
+
 <h2>Actor</h2>
 <ul>
-    <li th:each="actor : ${actorList}">
+    <li class="c-text" th:each="actor : ${actorList}">
         <span th:text="${actor.name}"></span>
         <img th:src="${actor.portraitUrl}">
         <span th:text="${actor.biography}"></span>
     </li>
 </ul>
 <h2>About</h2>
-    <div th:each="wild : ${wildList}">
+    <div class="c-text" th:each="wild : ${wildList}">
         <p th:text="${wild.about}"></p>
     </div>
 </body>
-</html>
