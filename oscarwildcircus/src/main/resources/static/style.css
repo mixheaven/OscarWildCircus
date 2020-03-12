@@ -83,3 +83,10 @@ h2{
     display: block;
     width: 100%;
 }
+.form-actor{
+    display: flex;
+    justify-content: space-around;
+}
+.form-actor-row label{
+    display: block;
+}

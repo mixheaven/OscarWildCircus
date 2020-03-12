@@ -66,16 +66,21 @@
     <h2>Actors</h2>
     <form enctype="multipart/form-data" th:action="@{/actor/create}" method="POST"
           th:object="${newActor}">
-        <label for="name">Name</label>
-        <input id="name" name="name" th:field="*{name}" type="text">
-
-        <label for="biography">biography</label>
-        <input id="biography" name="biography" th:field="*{biography}" type="text"/>
-
-
-        <label for="portrait">image</label>
-        <input type="file" id="portrait" th:field="*{portrait}"/>
-        <input type="submit" value="Valider"/>
+        <div class="form-actor">
+            <div class="form-actor-row">
+                <label for="name">Name</label>
+                <input id="name" name="name" th:field="*{name}" type="text">
+            </div>
+            <div class="form-actor-row">
+                <label for="biography">biography</label>
+                <input id="biography" name="biography" th:field="*{biography}" type="text"/>
+             </div>
+            <div class="form-actor-row">
+                <label for="portrait">image</label>
+                <input type="file" id="portrait" th:field="*{portrait}"/>
+            </div>
+            <input type="submit" value="Valider"/>
+        </div>
 
     </form>
     <h2>Home</h2>
