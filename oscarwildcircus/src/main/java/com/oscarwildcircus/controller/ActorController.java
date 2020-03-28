@@ -5,14 +5,19 @@ import com.oscarwildcircus.entity.Wild;
 import com.oscarwildcircus.repository.ActorRepository;
 import com.oscarwildcircus.repository.WildRepository;
 import com.oscarwildcircus.storage.StorageService;
+import org.springframework.beans.BeanInfoFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Optional;
 
 
 @Controller
+@RequestMapping("/actor")
 public class ActorController {
 
     @Autowired
@@ -33,7 +38,7 @@ public class ActorController {
      * @param model
      * @return template page about
      */
-    @GetMapping("/actor")
+    @GetMapping
     public String actor(Model model){
         Actor currentActor = new Actor();
         Wild currentWild = new Wild();
@@ -49,7 +54,7 @@ public class ActorController {
      * @return template of creation form
      * @throws Exception
      */
-    @GetMapping("/actor/create")
+    @GetMapping("/create")
     public String getAll(Model model) throws Exception{
         model.addAttribute("newActor", new Actor());
         return "about";
@@ -61,7 +66,7 @@ public class ActorController {
      * @param actor
      * @return directly at admin page for other completion
      */
-    @PostMapping("/actor/create")
+    @PostMapping("/create")
     public String actorFormProcess(Actor actor){
 
         storageService.store(actor.getPortrait());
@@ -70,6 +75,31 @@ public class ActorController {
         return "redirect:/admin";
 
     }
+    @GetMapping("/{id}/delete")
+    public String deleteActor(@PathVariable long id) throws Exception {
+        actorRepository.deleteById(id);
+        return "redirect:/admin";
+    }
+    @GetMapping("/{id}/edit")
+    public String upDateActorForm(@PathVariable long id, Model model) throws Exception{
+        Optional<Actor> newActor = actorRepository.findById(id);
+        model.addAttribute("pathMethod", "/actor/" + id + "/edit");
+        model.addAttribute("newActor", newActor);
 
+        return "/actorForm";
+    }
+    @PostMapping("/{id}/edit")
+    public String update(@PathVariable long id, @Valid @ModelAttribute("newActor") Actor newActor, BindingResult bindingResult, Model model) throws Exception{
+        Optional<Actor> currentActor = actorRepository.findById(id);
+        if (bindingResult.hasErrors()){
+            model.addAttribute("newActor", newActor);
+            model.addAttribute("currentActor", currentActor);
+            model.addAttribute("pathMethod","/actor/" + id + "/edit");
+            return "/admin";
+        }
+        actorRepository.save(newActor);
+        return "redirect:/admin";
+
+    }
 
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/fragments/head.html :: head"></head>
+<body>
+<h1>Oscar Wild Circus</h1>
+
+<nav th:replace="/fragments/navbar.html :: navbar"></nav>
+
+
+
+<h2>Activity</h2>
+<form enctype="multipart/form-data" th:action="@{${pathMethod}}" method="POST"
+      th:object="${newActivity}">
+
+    <div class="form-activity">
+        <div class="form-activity-row">
+            <label for="title">Title</label>
+            <input id="title" name="title" th:field="*{title}" type="text">
+        </div>
+        <div class="form-activity-row">
+            <label for="genre">genre</label>
+            <input id="genre" name="genre" th:field="*{genre}">
+        </div>
+        <div class="form-activity-row">
+            <label for="cost">Price</label>
+            <input id="cost" name="cost" type="text">
+        </div>
+        <div class="form-activity-row">
+            <span th:errors="*{date}" th:if="${#fields.hasErrors('date')}">Name Error</span>
+            <label for="date">Date</label>
+            <input id="date" name="date" th:field="*{date}" type="date">
+        </div>
+        <div class="form-activity-row">
+            <span th:errors="*{startHour}" th:if="${#fields.hasErrors('startHour')}">Name Error</span>
+            <label for="startHour">Beginning</label>
+            <input id="startHour" name="startHour" th:field="*{startHour}" type="time">
+        </div>
+        <div class="form-activity-row">
+            <span th:errors="*{endHour}" th:if="${#fields.hasErrors('endHour')}">Name Error</span>
+            <label for="endHour">End</label>
+            <input id="endHour" name="endHour" th:field="*{endHour}" type="time">
+        </div>
+        <input type="submit" value="Valider">
+    </div>
+
+</form>
+
+
+</body>
+</html>

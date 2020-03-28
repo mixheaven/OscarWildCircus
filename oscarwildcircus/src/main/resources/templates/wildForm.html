@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/fragments/head.html :: head"></head>
+<body>
+<h1>Oscar Wild Circus</h1>
+
+<nav th:replace="/fragments/navbar.html :: navbar"></nav>
+
+<h2>Home</h2>
+<form enctype="multipart/form-data" th:action="@{${pathMethod}}" th:method="POST"
+      th:object="${newWild}">
+
+    <div class="form-wild">
+        <div class="form-wild-row">
+            <label for="description">description</label>
+            <input id="description" name="description" th:field="*{description}" type="text"/>
+        </div>
+        <div class="form-wild-row">
+            <label for="about">about</label>
+            <input id="about" name="about" th:field="*{about}" type="text"/>
+        </div>
+        <div class="form-wild-row">
+            <label for="img">image</label>
+            <input type="file" id="img" th:field="*{picture}">
+        </div>
+        <input type="submit" value="Valider">
+    </div>
+
+</form>
+
+</body>
+</html>

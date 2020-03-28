@@ -10,7 +10,7 @@
 
 <body>
     <h2>Home</h2>
-    <form enctype="multipart/form-data" th:action="@{/wild/create}" th:method="POST"
+    <form enctype="multipart/form-data" th:action="@{/create}" th:method="POST"
           th:object="${newWild}">
 
         <div class="form-wild">
@@ -48,14 +48,17 @@
                 <input id="cost" name="cost" type="text">
             </div>
             <div class="form-activity-row">
+                <span th:errors="*{date}" th:if="${#fields.hasErrors('date')}">Name Error</span>
                 <label for="date">Date</label>
                 <input id="date" name="date" th:field="*{date}" type="date">
             </div>
             <div class="form-activity-row">
+                <span th:errors="*{startHour}" th:if="${#fields.hasErrors('startHour')}">Name Error</span>
                 <label for="startHour">Beginning</label>
                 <input id="startHour" name="startHour" th:field="*{startHour}" type="time">
             </div>
             <div class="form-activity-row">
+                <span th:errors="*{endHour}" th:if="${#fields.hasErrors('endHour')}">Name Error</span>
                 <label for="endHour">End</label>
                 <input id="endHour" name="endHour" th:field="*{endHour}" type="time">
             </div>
@@ -88,6 +91,9 @@
         <li th:each="wild : ${wildList}">
             <img th:src="${wild.pictureUrl}">
             <span th:text="${wild.description}"></span>
+            <a th:href="@{'/' + ${wild.id} + '/edit'}">Modifier</a>
+            <a href="#" th:href="@{'/'+ ${wild.id} +'/delete'}">Supprimer</a>
+
         </li>
     </ul>
     <h2>Activity</h2>
@@ -99,7 +105,8 @@
             <span th:text="${activity.date}"></span>
             <span th:text="${activity.startHour}"></span>
             <span th:text="${activity.endHour}"></span>
-            <a href="#" th:onclick="|deleteUrl('/admin/${activityOne}')|">Supprimer</a>
+            <a th:href="@{'/activity/' + ${activity.id} + '/edit'}">Modifier</a>
+            <a href="#" th:href="@{'/activity/'+ ${activity.id} +'/delete'}">Supprimer</a>
 
         </li>
 
@@ -111,7 +118,8 @@
             <span th:text="${actor.name}"></span>
             <span th:text="${actor.biography}"></span>
             <img th:src="${actor.portraitUrl}">
-            <a href="#" th:onclick="|deleteUrl('/admin/${actor.id}')|">Supprimer</a>
+            <a th:href="@{'/actor/' + ${actor.id} + '/edit'}">Modifier</a>
+            <a href="#" th:href="@{'/actor/'+ ${actor.id} +'/delete'}">Supprimer</a>
 
         </li>
     </ul>

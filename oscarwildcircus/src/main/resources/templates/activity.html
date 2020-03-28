@@ -10,7 +10,7 @@
         <li class="c-text" th:each="activity : ${activityList}">
             <span th:text="${activity.title}"></span>
             <span th:text="${activity.genre}"></span>
-            <span th:text="${activity.cost}"></span>
+            <span th:text="${activity.cost}">
             <span th:text="${activity.date}"></span>
             <span th:text="${activity.startHour}"></span>
             <span th:text="${activity.endHour}"></span>

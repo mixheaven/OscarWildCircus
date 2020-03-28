@@ -12,7 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Optional;
 
 
 @Controller
@@ -32,11 +36,10 @@ public class AdminController {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    public AdminController(ActivityRepository activityRepository){
+    public AdminController(ActivityRepository activityRepository) {
         this.activityRepository = activityRepository;
 
     }
-
 
 
     /**
@@ -47,7 +50,7 @@ public class AdminController {
      */
     @GetMapping
     public String getAdminList(Model model) {
-        Wild currentWild= new Wild();
+        Wild currentWild = new Wild();
         Activity currentActivity = new Activity();
         Actor currentActor = new Actor();
         model.addAttribute("newActor", currentActor);
@@ -60,13 +63,14 @@ public class AdminController {
 
         return "admin";
     }
+
     @GetMapping("/ticket/")
-    public String ticket( Model model){
+    public String ticket(Model model) {
         Reservation currentReservation = new Reservation();
 
         model.addAttribute("activityOne", activityRepository.findAll());
-        model.addAttribute("newReservation",currentReservation);
-        model.addAttribute("reservationList",reservationRepository.findAll());
+        model.addAttribute("newReservation", currentReservation);
+        model.addAttribute("reservationList", reservationRepository.findAll());
         return "ticket";
     }
 

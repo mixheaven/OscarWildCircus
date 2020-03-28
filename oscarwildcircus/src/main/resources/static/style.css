@@ -68,7 +68,7 @@ h2{
 }
 .form-wild{
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
 }
 .form-wild-row input{
     display: block;
@@ -90,3 +90,4 @@ h2{
 .form-actor-row label{
     display: block;
 }
+#activity-form
