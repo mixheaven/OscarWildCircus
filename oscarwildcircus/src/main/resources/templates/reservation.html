@@ -45,9 +45,9 @@
                 <span th:text="${activity.title}"></span>
                 <span th:text="${activity.genre}"></span>
                 <span th:text="${activity.cost}"></span>
-                <span th:text="${activity.date}"></span>
-                <span th:text="${activity.startHour}"></span>
-                <span th:text="${activity.endHour}"></span>
+                <span th:text="${#dates.format(activity.date, 'dd-MM-yyyy')}"></span>
+                <span th:text="${#dates.format(activity.startHour, 'HH:mm')}"></span>
+                <span th:text="${#dates.format(activity.endHour, 'HH:mm')}"></span>
                 <input type="checkbox" th:field="${activityList}" value="${activityOne}">
             </li>
         </ul>

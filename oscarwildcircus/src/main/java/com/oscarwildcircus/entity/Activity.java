@@ -31,10 +31,10 @@ public class Activity implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
-    @DateTimeFormat(pattern = "hh:mm")
+    @DateTimeFormat(pattern = "HH:mm")
     private Date startHour;
 
-    @DateTimeFormat(pattern = "hh:mm")
+    @DateTimeFormat(pattern = "HH:mm")
     private Date endHour;
 
     @ManyToOne

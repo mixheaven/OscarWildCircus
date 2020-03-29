@@ -8,7 +8,7 @@
 </head>
 <nav th:replace="/fragments/navbar.html :: navbar"></nav>
 
-<body>
+<body class="form-panel">
     <h2>Home</h2>
     <form enctype="multipart/form-data" th:action="@{/create}" th:method="POST"
           th:object="${newWild}">
@@ -26,7 +26,7 @@
                 <label for="img">image</label>
                 <input type="file" id="img" th:field="*{picture}">
             </div>
-            <input type="submit" value="Valider">
+            <input type="submit" value="Valider"/>
         </div>
 
     </form>
@@ -102,9 +102,9 @@
             <span th:text="${activity.title}"></span>
             <span th:text="${activity.genre}"></span>
             <span th:text="${activity.cost}"></span>
-            <span th:text="${activity.date}"></span>
-            <span th:text="${activity.startHour}"></span>
-            <span th:text="${activity.endHour}"></span>
+            <span th:text="${#dates.format(activity.date, 'dd-MM-yyyy')}"></span>
+            <span th:text="${#dates.format(activity.startHour, 'HH:mm')}"></span>
+            <span th:text="${#dates.format(activity.endHour, 'HH:mm')}"></span>
             <a th:href="@{'/activity/' + ${activity.id} + '/edit'}">Modifier</a>
             <a href="#" th:href="@{'/activity/'+ ${activity.id} +'/delete'}">Supprimer</a>
 

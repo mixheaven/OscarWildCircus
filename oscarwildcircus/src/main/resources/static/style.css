@@ -68,26 +68,39 @@ h2{
 }
 .form-wild{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+}
+.form-wild-row{
+    margin: 10px;
 }
 .form-wild-row input{
     display: block;
 }
 .form-activity{
     display: flex;
-    flex-flow: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
 
+}
+.form-activity-row{
+    margin: 10px;
 }
 .form-activity-row input{
     display: block;
     width: 100%;
+
 }
 .form-actor{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
-.form-actor-row label{
+.form-actor-row{
+    margin: 10px;
+}
+.form-actor-row input{
     display: block;
+
 }
-#activity-form
+
+.form-panel h2{
+    color: black;
+}
