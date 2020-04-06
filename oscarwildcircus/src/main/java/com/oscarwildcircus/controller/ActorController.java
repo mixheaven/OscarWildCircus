@@ -57,6 +57,8 @@ public class ActorController {
     @GetMapping("/create")
     public String getAll(Model model) throws Exception{
         model.addAttribute("newActor", new Actor());
+        model.addAttribute("htTpMethod", "PUT");
+        model.addAttribute("pathMethod", "/actor/create");
         return "about";
     }
 
@@ -97,6 +99,8 @@ public class ActorController {
             model.addAttribute("pathMethod","/actor/" + id + "/edit");
             return "/admin";
         }
+        storageService.store(newActor.getPortrait());
+        newActor.setPortraitUrl("/files/" + newActor.getPortrait().getOriginalFilename());
         actorRepository.save(newActor);
         return "redirect:/admin";
 

@@ -46,6 +46,30 @@ h2{
 .c-text{
     color: white;
 }
+.t-c-text{
+    color: white;
+    border-collapse: collapse;
+    margin: 0.5rem 0;
+
+
+}
+.t-c-text img{
+    width: 100px;
+}
+.t-c-text th,
+.t-c-text td{
+    border: 3px solid white;
+    padding: 0,5rem;
+}
+#t-activity{
+    width: 80%;
+    margin: 100px 30px;
+}
+
+.t-c-tex caption {
+    border-bottom: none;
+    padding: 0.8rem;
+}
 .form-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -104,3 +128,20 @@ h2{
 .form-panel h2{
     color: black;
 }
+#about{
+    padding: 80px, 0;
+    display: flex;
+    justify-content: space-around;
+
+}
+#about-actor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+#about-about{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}
+

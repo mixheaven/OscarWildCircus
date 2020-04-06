@@ -8,6 +8,7 @@ import com.oscarwildcircus.repository.ActivityRepository;
 import com.oscarwildcircus.repository.ActorRepository;
 import com.oscarwildcircus.repository.ReservationRepository;
 import com.oscarwildcircus.repository.WildRepository;
+import com.oscarwildcircus.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,8 @@ import java.util.Optional;
 @RequestMapping("/admin")
 public class AdminController {
 
+    @Autowired
+    private StorageService storageService;
 
     @Autowired
     private WildRepository wildRepository;
@@ -36,8 +39,9 @@ public class AdminController {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    public AdminController(ActivityRepository activityRepository) {
+    public AdminController(ActivityRepository activityRepository, StorageService storageService) {
         this.activityRepository = activityRepository;
+        this.storageService = storageService;
 
     }
 

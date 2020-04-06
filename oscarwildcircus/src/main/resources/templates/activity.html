@@ -6,15 +6,38 @@
 <h1>Oscar Wild Circus</h1>
 
     <nav th:replace="/fragments/navbar.html :: navbar"></nav>
-    <ul>
-        <li class="c-text" th:each="activity : ${activityList}">
-            <span th:text="${activity.title}"></span>
-            <span th:text="${activity.genre}"></span>
-            <span th:text="${activity.cost}"></span>
-            <span th:text="${#dates.format(activity.date, 'dd-MM-yyyy')}"></span>
-            <span th:text="${#dates.format(activity.startHour, 'HH:mm')}"></span>
-            <span th:text="${#dates.format(activity.endHour, 'HH:mm')}"></span>
-        </li>
-    </ul>
+
+        <table class="t-c-text" id="t-activity">
+            <thead>
+                <td>
+                    Title
+                </td>
+                <td>Genre
+                </td>
+                <td>
+                    Cost
+                </td>
+                <td>
+                    Day
+                </td>
+                <td>
+                    Started
+                </td>
+                <td>
+                    Ended
+                </td>
+            </thead>
+            <tbody>
+            <tr class="c-text" th:each="activity : ${activityList}">
+                <td th:text="${activity.title}"></td>
+                <td th:text="${activity.genre}"></td>
+                <td th:text="${activity.cost}"></td>
+                <td th:text="${#dates.format(activity.date, 'dd-MM-yyyy')}"></td>
+                <td th:text="${#dates.format(activity.startHour, 'HH:mm')}"></td>
+                <td th:text="${#dates.format(activity.endHour, 'HH:mm')}"></td>
+            </tr>
+            </tbody>
+        </table>
+
 </body>
 </html>

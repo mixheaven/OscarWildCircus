@@ -5,17 +5,38 @@
 <h1>Oscar Wild Circus</h1>
 
 <nav th:replace="/fragments/navbar.html :: navbar"></nav>
-
-<h2>Actor</h2>
-<ul>
-    <li class="c-text" th:each="actor : ${actorList}">
-        <span th:text="${actor.name}"></span>
-        <img th:src="${actor.portraitUrl}">
-        <span th:text="${actor.biography}"></span>
-    </li>
-</ul>
-<h2>About</h2>
-    <div class="c-text" th:each="wild : ${wildList}">
-        <p th:text="${wild.about}"></p>
+<div id="about">
+    <div id="about-about">
+        <h2>About</h2>
+            <div class="c-text" th:each="wild : ${wildList}">
+                <p th:text="${wild.about}"></p>
+            </div>
     </div>
+    <div id="about-actor">
+        <h2>Actor</h2>
+
+        <table class="t-c-text">
+            <thead>
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Biography
+                </td>
+                <td>
+                    Picture
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="actor : ${actorList}">
+                <td th:text="${actor.name}"></td>
+                <td th:text="${actor.biography}"></td>
+                <td><img th:src="${actor.portraitUrl}"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
